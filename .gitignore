@@ -1,0 +1,6 @@
+
+*.class
+
+bin/*
+doc/*
+*.DS_STORE
