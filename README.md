@@ -3,6 +3,6 @@ BoulderDashAssignment
 
 2nd year computer science assignment: implementing a specified version of Boulder Dash in Java.
 
-![Screenshot](/screenshot-hardlevel.png)
+### Click to play video demo: ###
 
-[Video demo](http://screencast.com/t/XIVeif9DMTu8)
+[ ![Screenshot](/screenshot-hardlevel.png) ](http://screencast.com/t/XIVeif9DMTu8 "Play Video Demo")
