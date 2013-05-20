@@ -20,7 +20,8 @@ public class SelectingMode extends InteractionMode implements Selection.Listener
 		selection.addListener(this);
 	}
 	
-	public void selectionChanged(){
+	@Override
+    public void selectionChanged(){
 		this.appState.caveView.repaint();
 	}
 	

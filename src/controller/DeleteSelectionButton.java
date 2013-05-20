@@ -27,7 +27,8 @@ public class DeleteSelectionButton extends JButton implements ActionListener, Se
 		m.registerModeListener(this);
 	}
 	
-	public void actionPerformed(ActionEvent arg0) {
+	@Override
+    public void actionPerformed(ActionEvent arg0) {
 		for (Point p : m.getSelection()) c.removeElementAt(p);
 		m.getSelection().clear();
 	}

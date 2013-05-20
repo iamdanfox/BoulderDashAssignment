@@ -18,11 +18,13 @@ public class Player extends CaveElement {
 		return facing;
 	}
 
-	public Boolean acceptPlayer(Direction d) {
+	@Override
+    public Boolean acceptPlayer(Direction d) {
 		throw new UnsupportedOperationException();
 	}
 	
-	public Boolean allowsPlacementAt(Point point){
+	@Override
+    public Boolean allowsPlacementAt(Point point){
 		Player c = getPlayerFor(parentCave);
 		if (this==c || c==null || c.getLocation()==null){
 			setCurrent(this);

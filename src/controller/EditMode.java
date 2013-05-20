@@ -20,7 +20,8 @@ public class EditMode extends SelectingMode {
 	
 	protected Cave flyingCave;
 	
-	protected void makeNotActiveDelegate(){
+	@Override
+    protected void makeNotActiveDelegate(){
 		//save selection for later.
 		suspendedSelection.clear();
 		for (Point p : selection) suspendedSelection.add((Point)p.clone());
@@ -28,7 +29,8 @@ public class EditMode extends SelectingMode {
 		super.makeNotActiveDelegate();
 	}
 	
-	protected void makeActiveDelegate(){
+	@Override
+    protected void makeActiveDelegate(){
 		super.makeActiveDelegate();
 		
 		// restore last selection, filter out any dead elements

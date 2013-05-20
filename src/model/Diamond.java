@@ -20,7 +20,8 @@ public class Diamond extends SlipperyGravityElement {
 		return true;
 	}
 	
-	public void afterSuccessfulMove(){
+	@Override
+    public void afterSuccessfulMove(){
 		parentCave.setDiamondTarget(parentCave.getDiamondTarget() - 1);
 	}
 

@@ -40,7 +40,8 @@ public class Cave {
 		this.listeners = new HashSet<CaveListener>();
 		
 		stepTimer.scheduleAtFixedRate(new TimerTask(){
-			public void run() { step();	}
+			@Override
+            public void run() { step();	}
 		}, 0, stepInterval);
 	}
 
@@ -225,7 +226,8 @@ public class Cave {
 	 * will not affect the original cave.
 	 * @return a fresh cave, with an equal grid layout but with no registered listeners etc.
 	 */
-	public Cave clone(){
+	@Override
+    public Cave clone(){
 		Cave cave2 =new Cave(width, height);
 		cave2.copyStateFrom(this);
 		return cave2;

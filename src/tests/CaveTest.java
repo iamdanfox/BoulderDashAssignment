@@ -126,12 +126,14 @@ public class CaveTest {
 			public Boolean function1Executed = false;
 			public Boolean function2Executed = false;
 
-			public void wonStateChanged() {
+			@Override
+            public void wonStateChanged() {
 				assertEquals(cave1.getDiamondTarget(),0);
 				function1Executed = true;
 			}
 
-			public void diamondTargetChanged() {
+			@Override
+            public void diamondTargetChanged() {
 				function2Executed = true;
 			}
 

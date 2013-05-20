@@ -5,20 +5,12 @@ import static org.junit.Assert.*;
 
 import java.awt.Point;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import model.Boulder;
 import model.Cave;
-import model.CaveElement;
-import model.Diamond;
-import model.Dirt;
 import model.LevelStorer;
 import model.Player;
-import model.Wall;
 
 import org.junit.Test;
 

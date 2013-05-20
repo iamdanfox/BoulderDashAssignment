@@ -106,10 +106,12 @@ public class ApplicationFrame {
 		
 		// make button listen for mode change
 		m.registerModeListener(new ModeListener(){
-			public void madeActive(InteractionMode m) {
+			@Override
+            public void madeActive(InteractionMode m) {
 				button.setSelected(true);
 			}
-			public void madeNotActive(InteractionMode m) {
+			@Override
+            public void madeNotActive(InteractionMode m) {
 				button.setSelected(false);
 			}			
 		});

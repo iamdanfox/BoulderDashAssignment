@@ -20,7 +20,8 @@ public class CreatorMode extends SelectingMode {
 	/**
 	 * Iterate through selection, replacing every element with a new instance of c.
 	 */
-	public void mouseReleased(MouseEvent arg0){
+	@Override
+    public void mouseReleased(MouseEvent arg0){
 		super.mouseReleased(arg0);
 		for (Point p : selection)	{
 			CaveElement e = c.cloneToCave(this.appState.cave);
