@@ -21,7 +21,7 @@ public class ApplicationFrame {
 	private ApplicationFrame() {
 		// window appearance and behaviour
 		frame = new JFrame("Boulder Dash");
-		frame.setLocation(400,300);
+		frame.setLocation(300,150);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -30,7 +30,7 @@ public class ApplicationFrame {
 		frame.setContentPane(contentPane);
 
 		// set up state
-		appState = new ApplicationState();
+		appState = new ApplicationState(new Cave(20,10));
 		Cave cave = appState.cave;
 		
 		// set up interaction modes
@@ -103,26 +103,30 @@ public class ApplicationFrame {
 				}
 			}
 		});
-		
-		// make button listen for mode change
-		m.registerModeListener(new ModeListener(){
-			@Override
+
+        // make button listen for mode change
+        m.registerModeListener(new ModeListener() {
+            @Override
             public void madeActive(InteractionMode m) {
-				button.setSelected(true);
-			}
-			@Override
+                button.setSelected(true);
+            }
+
+            @Override
             public void madeNotActive(InteractionMode m) {
-				button.setSelected(false);
-			}			
-		});
-		
+                button.setSelected(false);
+            }
+        });
+
 		return button;
 	}
-	
-	private void bulkCreate(CaveElement e, int x0, int y0, int x1, int y1){
-		for(int x=x0;x<=x1;x++) for (int y=y0;y<=y1;y++)	appState.cave.setElementAt(new Point(x,y), e.cloneToCave(appState.cave));
-	}
-	
+
+    private void bulkCreate(CaveElement e, int x0, int y0, int x1, int y1) {
+        for (int x = x0; x <= x1; x++)
+            for (int y = y0; y <= y1; y++)
+                appState.cave.setElementAt(new Point(x, y),
+                        e.cloneToCave(appState.cave));
+    }
+
 	/**
 	 * Launch the application.
 	 */

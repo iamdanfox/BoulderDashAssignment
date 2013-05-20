@@ -20,8 +20,8 @@ public class ApplicationState {
 	private final Collection<InteractionMode> modes = new HashSet<InteractionMode>();
 	private InteractionMode activeMode;
 	
-	public ApplicationState(){
-		this.cave = new Cave(20,10);
+	public ApplicationState(Cave cave){
+		this.cave = cave;
 		this.caveView = new CaveView(this);
 	}
 
