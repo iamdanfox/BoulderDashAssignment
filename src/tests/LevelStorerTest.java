@@ -7,10 +7,11 @@ import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
 import java.util.Set;
 
-import model.LevelStorer;
 
 
 import org.junit.Test;
+
+import controller.LevelStorer;
 
 public class LevelStorerTest {
 

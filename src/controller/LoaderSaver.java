@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import model.Cave;
-import model.LevelStorer;
 import model.SimpleLexer;
 
 /**
