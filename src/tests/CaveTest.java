@@ -8,6 +8,17 @@ import model.*;
 import org.junit.Test;
 
 public class CaveTest {
+    
+    @Test
+    public void caveElemTests(){
+        Player p = new Player(null);
+        assertEquals("Player[RIGHT]", p.toString());
+        
+        assertEquals("Wall[Red]", new Wall(null).toString());
+        assertEquals("Wall[Red]", new Wall(null, Color.red).toString());
+        assertEquals("Wall[Green]", new Wall(null, Color.green).toString());
+        assertEquals("Wall[Blue]", new Wall(null, Color.blue).toString());
+    }
 
 	@Test
 	public void checkCaveBounds() {

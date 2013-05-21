@@ -29,4 +29,9 @@ public class Diamond extends SlipperyGravityElement {
 	public Diamond cloneToCave(Cave parentCave2) {
 		return new Diamond(parentCave2);
 	}
+
+	@Override
+    public String toString() {
+        return "Diamond";
+    }
 }

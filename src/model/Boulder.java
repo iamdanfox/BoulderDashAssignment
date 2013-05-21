@@ -46,4 +46,9 @@ public class Boulder extends SlipperyGravityElement {
 		return new Boulder(parentCave2);
 	}
 
+
+    public String toString() {
+        return "Boulder";
+    }
+
 }

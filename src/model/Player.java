@@ -77,4 +77,9 @@ public class Player extends CaveElement {
 		return newPlayer;
 	}
 
+	@Override
+    public String toString() {
+        return "Player["+facing+"]";
+    }
+
 }

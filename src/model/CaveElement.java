@@ -61,4 +61,9 @@ public abstract class CaveElement {
 	 * @return an equal cave element, but bound to the new cave.
 	 */
 	public abstract CaveElement cloneToCave(Cave other);
+	
+	/**
+	 * @return String representation of this CaveElement, should encapsulate all state.
+	 */
+	public abstract String toString();
 }

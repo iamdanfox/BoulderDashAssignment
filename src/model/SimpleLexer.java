@@ -3,6 +3,7 @@ package model;
 import java.awt.Point;
 import java.util.Map;
 import java.util.HashMap;
+import java.awt.Color;
 
 public class SimpleLexer {
 
@@ -52,7 +53,10 @@ public class SimpleLexer {
         elemMap.put('*', new Diamond(null));
         elemMap.put('+', new Dirt(null));
         elemMap.put('#', new Wall(null));
-        elemMap.put('<', new Player(null));
+        elemMap.put('R', new Wall(null, Color.red));
+        elemMap.put('G', new Wall(null, Color.green));
+        elemMap.put('B', new Wall(null, Color.blue));
+        elemMap.put('>', new Player(null));
         
         return elemMap.get(c);
     }
@@ -81,11 +85,13 @@ public class SimpleLexer {
 
     protected static Character caveElemToChar(CaveElement e) {
         Map<String, Character> charMap = new HashMap<String, Character>();
-        charMap.put(Boulder.class.getSimpleName(), 'o');
-        charMap.put(Diamond.class.getSimpleName(), '*');
-        charMap.put(Dirt.class.getSimpleName(), '+');
-        charMap.put(Wall.class.getSimpleName(), '#'); // TODO store colour (r,g,b)
-        charMap.put(Player.class.getSimpleName(), '<'); // TODO store direction
+        charMap.put("Boulder", 'o');
+        charMap.put("Diamond", '*');
+        charMap.put("Dirt", '+');
+        charMap.put("Wall[Red]", '#');
+        charMap.put("Wall[Green]", 'G');
+        charMap.put("Wall[Blue]", 'B');
+        charMap.put("Player[RIGHT]", '>');
         
         return (e == null) ? '.' : charMap.get(e.getClass().getSimpleName());
     }

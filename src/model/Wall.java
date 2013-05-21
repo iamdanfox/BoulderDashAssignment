@@ -25,6 +25,7 @@ public class Wall extends CaveElement {
 	
 	public Wall(Cave parentCave, Color color){
 		super(parentCave);
+        assert(allowedColors.containsValue(color));
 		this.color = color;
 	}
 
@@ -49,5 +50,10 @@ public class Wall extends CaveElement {
 		newWall.setColor(color);
 		return newWall;
 	}
+
+	@Override
+    public String toString() {
+        return "Wall["+allowedColors.backwards.get(color)+"]";
+    }
 
 }

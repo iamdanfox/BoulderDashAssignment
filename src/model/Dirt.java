@@ -26,4 +26,9 @@ public class Dirt extends CaveElement {
 	public Dirt cloneToCave(Cave parentCave2) {
 		return new Dirt(parentCave2);
 	}
+
+	@Override
+    public String toString() {
+        return "Dirt";
+    }
 }
