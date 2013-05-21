@@ -1,11 +1,11 @@
 41
-o o o # o o o o o o o o o o # o + + + o 
-o * o # o o * o o o o * o o + * # # o o 
-* o o # * o o o o o o o * o # * + o o * 
-+ + * + o o o o > o o o o o # * + o * o 
-* + * # * * * * * * * * * * # + + * o + 
-* o * # * * * * * * * * * * # + + o + . 
-* # + # + + + + + + + + # + # + + + . . 
-* + # # . . . # . . . . . . . # # . . . 
-+ + # . . . . # . . . . . . . . . # # * 
-+ # . . . . . # . o . . o . o . . . * # 
+o o o G o o o o o o o o o o G o + + + o 
+o * o G o o * o o o o * o o + * # # o o 
+* o o G * o o o o o o o * o G * + o o * 
++ + * + o o o o > o o o o o G * + o * o 
+* + * G * * * * * * * * * * G + + * o + 
+* o * G * * * * * * * * * * G + + o + . 
+* # + G + + + + + + + + # + G + + + . . 
+* + # G . . . B . . . . . . . G G . . . 
++ + G . . . . B . . . . . . . . . G G * 
++ G . . . . . B . o . . o . o . . . * G 
