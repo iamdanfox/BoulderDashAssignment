@@ -28,7 +28,7 @@ public class LevelStorerTest {
     
     @Test
     public void testAntiLexing(){
-        Cave cave2 = new Cave(3,1);
+        Cave cave2 = new Cave(3,2);
         Player myPlayer2 = new Player(cave2);
         cave2.setElementAt(new Point(0,0), myPlayer2); 
         cave2.setElementAt(new Point(1,0), new Boulder(cave2)); 
@@ -41,7 +41,8 @@ public class LevelStorerTest {
         		"[Player: <]\n" +
         		"[Wall: #]\n" +
         		"{diamondTarget: 0}\n" +
-        		"< o . \n";
+        		"< o . \n"+
+                ". . . \n";
         assertEquals(intended,LevelStorer.antiLex(cave2));// bit too strict atm.
     }
     
