@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import model.Cave;
 import model.LevelStorer;
+import model.SimpleLexer;
 
 /**
  * Allows the user to load/save a text file representation of a cave.
@@ -26,7 +27,7 @@ public class LoaderSaver extends JPanel implements ModeListener {
         this.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent arg0) {
                 System.out.println("saveButton pressed");
-                System.out.println(LevelStorer.writeToFile(LevelStorer.antiLex(cave)));
+                System.out.println(LevelStorer.writeToFile(SimpleLexer.antiLex(cave)));
             }
         });
     }};

@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
@@ -211,23 +212,7 @@ public class LevelStorer {
     }
     
     public static String readFromFile(String fileName) throws FileNotFoundException{
-        BufferedReader reader = new BufferedReader( new FileReader (DIRECTORY+"/"+fileName));
-        String         line = null;
-        StringBuilder  stringBuilder = new StringBuilder();
-        String         ls = System.getProperty("line.separator");
-
-        try {
-            while( ( line = reader.readLine() ) != null ) {
-                stringBuilder.append( line );
-                stringBuilder.append( ls );
-            }
-            reader.close();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return stringBuilder.toString();
+        return new Scanner(new File(DIRECTORY+"/"+fileName)).useDelimiter("\\Z").next();
     }
     
     public static Cave loadCaveFromFile(String fileName) throws FileNotFoundException{

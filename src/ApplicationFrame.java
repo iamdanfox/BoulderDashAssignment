@@ -87,8 +87,8 @@ public class ApplicationFrame {
         toolbar.add(new LoaderSaver(cave, editMode));
 		
 		// fill cave:
-		loadCave("hardcave.txt"); 
-		//loadCave("democave.txt");   
+		loadCave("hard.txt"); 
+		//loadCave("demo.txt");   
 		
 		// last minute settings, then curtains up
 		frame.pack();
@@ -132,7 +132,7 @@ public class ApplicationFrame {
 	
 	private void loadCave(String filename){
         try {
-            Cave c = LevelStorer.loadCaveFromFile(filename);
+            Cave c = SimpleLexer.lex(LevelStorer.readFromFile(filename));
             appState.cave.setWidth(c.getWidth());
             appState.cave.setHeight(c.getHeight());
             appState.cave.copyStateFrom(c);

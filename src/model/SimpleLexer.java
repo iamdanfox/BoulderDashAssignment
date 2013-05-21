@@ -13,7 +13,7 @@ public class SimpleLexer {
      * @return
      */
     public static Cave lex(String text){
-        String[] rows = text.split("[\\r\\n]+");     
+        String[] rows = text.split("[\\r\\n]+");          
         
         int dy=1; // lines in file before cave starts
         int height = rows.length - dy;

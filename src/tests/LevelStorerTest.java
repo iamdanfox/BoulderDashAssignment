@@ -23,8 +23,14 @@ public class LevelStorerTest {
         String nextName = LevelStorer.findUnusedFilename();
         assertEquals(false, takenNames.contains(nextName));
         
-        System.out.println(LevelStorer.readFromFile("level0.txt"));
+        //System.out.println(LevelStorer.readFromFile("level0.txt"));
     }
+    
+//    @Test 
+//    public void testStringReading() throws FileNotFoundException {
+//        System.out.println(LevelStorer.readFromFile("demo.txt"));
+//    }
+    
     
     @Test
     public void testAntiLexing(){

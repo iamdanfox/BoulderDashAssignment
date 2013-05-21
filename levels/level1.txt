@@ -1,3 +1,4 @@
+41
 o o o # o o o o o o o o o o # o + + + o 
 o * o # o o * o o o o * o o + * # # o o 
 * o o # * o o o o o o o * o # * + o o * 
@@ -8,4 +9,3 @@ o * o # o o * o o o o * o o + * # # o o
 * + # #       #               # #       
 + + #         #   o o             # # * 
 + #               o o o o o o       * # 
-
