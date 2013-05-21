@@ -63,11 +63,11 @@ public class ApplicationFrame {
 		
 		// set up interaction mode buttons
 		toolbar.add(makeModeButton(editMode, "Edit"));
-		toolbar.add(makeModeButton(cWallMode, "Create Wall"));
-		toolbar.add(makeModeButton(cBoulder, "Create Boulder"));
-		toolbar.add(makeModeButton(cDiamond, "Create Diamond"));
-		toolbar.add(makeModeButton(cDirt, "Create Dirt"));
-		toolbar.add(makeModeButton(cPlayer, "Create Player"));
+		toolbar.add(makeModeButton(cWallMode, "Wall"));
+		toolbar.add(makeModeButton(cBoulder, "Boulder"));
+		toolbar.add(makeModeButton(cDiamond, "Diamond"));
+		toolbar.add(makeModeButton(cDirt, "Dirt"));
+		toolbar.add(makeModeButton(cPlayer, "Player"));
 		toolbar.add(makeModeButton(playMode, "Play"));
 		
 		toolbar.addSeparator();
@@ -80,6 +80,10 @@ public class ApplicationFrame {
 		
 		// diamond target field
 		toolbar.add(new DiamondTargetField(cave, editMode));
+		
+
+        toolbar.addSeparator();
+        toolbar.add(new LoaderSaver(cave, editMode));
 		
 		// fill cave:
 		loadHardCave();   // play this if you dare!

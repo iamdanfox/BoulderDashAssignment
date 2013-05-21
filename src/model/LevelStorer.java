@@ -187,9 +187,12 @@ public class LevelStorer {
     /**
      * Saves a string to the first unused leveli.txt filename
      * @param contents
+     * @return the filename that was written
      */
-    public static void writeToFile(String contents){
-        writeToFile(findUnusedFilename(),contents);
+    public static String writeToFile(String contents){
+        String fname = findUnusedFilename();
+        writeToFile(fname,contents);
+        return fname;
     }
     
     /**
@@ -199,7 +202,7 @@ public class LevelStorer {
      */
     public static void writeToFile(String fileName, String contents) {        
         try {
-            PrintWriter out = new PrintWriter(DIRECTORY+"/"+fileName+".txt");
+            PrintWriter out = new PrintWriter(DIRECTORY+"/"+fileName);
             out.println(contents);
             out.close();
         } catch (FileNotFoundException e) {
