@@ -93,7 +93,7 @@ public class SimpleLexer {
         charMap.put("Wall[Blue]", 'B');
         charMap.put("Player[RIGHT]", '>');
         
-        return (e == null) ? '.' : charMap.get(e.getClass().getSimpleName());
+        return (e == null) ? '.' : charMap.get(e.toString());
     }
     
     @SuppressWarnings("serial")
