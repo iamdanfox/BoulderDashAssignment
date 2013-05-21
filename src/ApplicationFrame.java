@@ -87,8 +87,8 @@ public class ApplicationFrame {
         toolbar.add(new LoaderSaver(cave, editMode));
 		
 		// fill cave:
-		loadHardCave();   // play this if you dare!
-		//loadDemoCave();
+		loadCave("hardcave.txt"); 
+		//loadCave("democave.txt");   
 		
 		// last minute settings, then curtains up
 		frame.pack();
@@ -130,26 +130,14 @@ public class ApplicationFrame {
 	}
 
 	
-	private void loadHardCave(){
+	private void loadCave(String filename){
         try {
-            Cave c = LevelStorer.loadCaveFromFile("hardcave.txt");
+            Cave c = LevelStorer.loadCaveFromFile(filename);
             appState.cave.setWidth(c.getWidth());
             appState.cave.setHeight(c.getHeight());
             appState.cave.copyStateFrom(c);
         } catch (FileNotFoundException e) {
-            System.err.println("hardcave.txt couldn't be loaded");
-            e.printStackTrace();
-        }
-	}
-	
-    private void loadDemoCave(){
-        try {
-            Cave c = LevelStorer.loadCaveFromFile("democave.txt");
-            appState.cave.setWidth(c.getWidth());
-            appState.cave.setHeight(c.getHeight());
-            appState.cave.copyStateFrom(c);
-        } catch (FileNotFoundException e) {
-            System.err.println("democave.txt couldn't be loaded");
+            System.err.println(filename +" couldn't be loaded");
             e.printStackTrace();
         }
 	}

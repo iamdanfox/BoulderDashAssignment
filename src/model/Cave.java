@@ -125,7 +125,7 @@ public class Cave {
 	public void setDiamondTarget(int diamondTarget){ 
 		if (diamondTarget < 0){	throw new RuntimeException("Diamond target must be at least zero");	}
 		this.diamondTarget = diamondTarget; 
-		System.out.println("diamondTarget set to "+diamondTarget); // debug
+		//System.out.println("diamondTarget set to "+diamondTarget); // debug
 		fireDiamondTargetChanged();
 		if (diamondTarget==0) setWonState(true);
 	}
