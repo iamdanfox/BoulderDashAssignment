@@ -11,8 +11,9 @@ public class SimpleLexer {
      * Converts a String representation into a Cave.
      * @param source
      * @return
+     * @throws LexerException 
      */
-    public static Cave lex(String text){
+    public static Cave lex(String text) throws LexerException{
         String[] rows = text.split("[\\r\\n]+");          
         
         int dy=1; // lines in file before cave starts
@@ -22,8 +23,12 @@ public class SimpleLexer {
         Cave cave = new Cave(width,height);
         
         // find diamond target
-        int diamondTarget = Integer.parseInt(rows[0].replaceAll("\\s", ""));
-        cave.setDiamondTarget(diamondTarget);
+        try {
+            int diamondTarget = Integer.parseInt(rows[0].replaceAll("\\s", ""));
+            cave.setDiamondTarget(diamondTarget);
+        } catch (NumberFormatException e) {
+            throw new LexerException("Couldn't set Diamond Target");
+        }
         
         // populate cave
         for (int y = 0; y+dy < rows.length; y++) {
@@ -32,7 +37,8 @@ public class SimpleLexer {
                 char c = row[x * 2];
                 CaveElement e = charToCaveElem(c);
                 if (e != null)
-                    cave.setElementAt(new Point(x, y), e.cloneToCave(cave));
+                    if (!cave.setElementAt(new Point(x, y), e.cloneToCave(cave)))
+                        throw new LexerException("Couldn't place element in cave");
             }
         }
         
@@ -82,5 +88,12 @@ public class SimpleLexer {
         charMap.put(Player.class.getSimpleName(), '<'); // TODO store direction
         
         return (e == null) ? '.' : charMap.get(e.getClass().getSimpleName());
+    }
+    
+    @SuppressWarnings("serial")
+    public static class LexerException extends Exception{
+        public LexerException(String msg){
+            super(msg);
+        }
     }
 }

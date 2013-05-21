@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 import java.util.*;
 
 import javax.swing.event.MouseInputListener;
-import model.CaveListener;
+
 
 /**
  * An InteractionMode is a class that enables the user to interact with the

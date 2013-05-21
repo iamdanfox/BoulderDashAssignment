@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import model.*;
+import model.SimpleLexer.LexerException;
 import controller.*;
 
 
@@ -133,11 +134,12 @@ public class ApplicationFrame {
 	private void loadCave(String filename){
         try {
             Cave c = SimpleLexer.lex(LevelStorer.readFromFile(filename));
-            appState.cave.setWidth(c.getWidth());
-            appState.cave.setHeight(c.getHeight());
             appState.cave.copyStateFrom(c);
         } catch (FileNotFoundException e) {
             System.err.println(filename +" couldn't be loaded");
+            e.printStackTrace();
+        } catch (LexerException e) {
+            System.err.println(filename +" couldn't be lexed");
             e.printStackTrace();
         }
 	}

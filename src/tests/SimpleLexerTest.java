@@ -8,6 +8,7 @@ import model.Boulder;
 import model.Cave;
 import model.Player;
 import model.SimpleLexer;
+import model.SimpleLexer.LexerException;
 
 import org.junit.Test;
 
@@ -15,6 +16,7 @@ public class SimpleLexerTest {
 
     @Test
     public void converterFunctionsFwd(){
+        @SuppressWarnings("unused")
         SimpleLexer testRig = new SimpleLexer(){{
             Character[] cs = new Character[5];
             cs[0] = 'o';
@@ -29,7 +31,7 @@ public class SimpleLexerTest {
     }
     
     @Test
-    public void lexTest(){
+    public void lexTest() throws LexerException{
         String[] strs = new String[3];
         strs[0]= "3\n< o . \n# # # ";
         strs[1]= "0\n< o . ";

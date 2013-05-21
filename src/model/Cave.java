@@ -43,6 +43,10 @@ public class Cave {
             public void run() { step();	}
 		}, 0, stepInterval);
 	}
+	
+	public Cave(){
+	    this(0,0);
+	}
 
 	
 	/**
@@ -203,6 +207,8 @@ public class Cave {
 	public void copyStateFrom(Cave other){
 		// wipe grid clean
 		this.grid.clear();
+		this.setWidth(other.getWidth());
+		this.setHeight(other.getHeight());
 		
 		// populate with clone of other
 		for(int j=0;j<getHeight();j++){
@@ -227,10 +233,32 @@ public class Cave {
 	 */
 	@Override
     public Cave clone(){
-		Cave cave2 =new Cave(getWidth(), getHeight());
+		Cave cave2 =new Cave();
 		cave2.copyStateFrom(this);
 		return cave2;
 	}
+    
+    public Rectangle getCaveBounds() {
+        return new Rectangle(0,0,getWidth(),getHeight()); // (width-1, height-1) is the bottom right square allowed.
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+        fireDimensionsChanged();
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+        fireDimensionsChanged();
+    }
 	
 	public void addCaveListener(CaveListener l){
 		listeners.add(l);
@@ -263,26 +291,4 @@ public class Cave {
 	protected void fireDimensionsChanged(){
         for(CaveListener l : this.listeners) l.dimensionsChanged();
 	}
-	
-    public Rectangle getCaveBounds() {
-        return new Rectangle(0,0,getWidth(),getHeight()); // (width-1, height-1) is the bottom right square allowed.
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-        fireDimensionsChanged();
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-        fireDimensionsChanged();
-    }
 }
