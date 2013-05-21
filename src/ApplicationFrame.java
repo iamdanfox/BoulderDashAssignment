@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -88,6 +89,16 @@ public class ApplicationFrame {
 		// fill cave:
 		loadHardCave();   // play this if you dare!
 		//loadDemoCave();
+
+//		try {
+//            Cave lev2 = LevelStorer.loadCaveFromFile("level2.txt");
+//            appState.cave.setWidth(lev2.getWidth());
+//            appState.cave.setHeight(lev2.getHeight());
+//            appState.cave.copyStateFrom(lev2);
+//        } catch (FileNotFoundException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
 		
 		// last minute settings, then curtains up
 		frame.pack();

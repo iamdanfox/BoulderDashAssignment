@@ -53,8 +53,8 @@ public class EditMode extends SelectingMode {
 		if (mouseIsDragging){
 			g2d.translate(offsetX, offsetY);
 			Cave c = flyingCave;
-			for(int y=0;y<c.height;y++){
-				for(int x=0;x<c.width;x++){
+			for(int y=0;y<c.getHeight();y++){
+				for(int x=0;x<c.getWidth();x++){
 					CaveElement e = c.getElementAt(new Point(x,y));
 					if (e != null)	CaveView.painters.get(e.getClass()).paint(g2d,e, CaveView.squareSize); 
 				}
@@ -101,7 +101,7 @@ public class EditMode extends SelectingMode {
 				mouseIsDragging=true;		
 
 				// copy all selected elements to flying cave, removing them from main cave.
-				flyingCave = new Cave(cave.width,cave.height);
+				flyingCave = new Cave(cave.getWidth(),cave.getHeight());
 				for (Point p : selection){
 					flyingCave.setElementAt(p, cave.getElementAt(p).cloneToCave(flyingCave));
 					cave.removeElementAt(p);

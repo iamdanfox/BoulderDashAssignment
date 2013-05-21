@@ -112,6 +112,9 @@ public class CaveTest {
 
 			@Override
 			public void frozenStateChanged() { }
+
+			@Override
+            public void dimensionsChanged() {  }
 		});
 		
 		
@@ -145,6 +148,9 @@ public class CaveTest {
 
 			@Override
 			public void frozenStateChanged() { }
+
+			@Override
+            public void dimensionsChanged() {  }
 		}
 		
 		TestListener myListener = new TestListener();

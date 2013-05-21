@@ -10,11 +10,11 @@ import java.util.*;
 import javax.swing.event.MouseInputListener;
 import model.CaveListener;
 
-
 /**
- * An InteractionMode is a class that enables the user to interact with the underlying cave model rather than just observing it.
- * It is primarily part of the 'controller' but does allow painting over the view.
- *
+ * An InteractionMode is a class that enables the user to interact with the
+ * underlying cave model rather than just observing it. It is primarily part of
+ * the 'controller' but does allow painting over the view.
+ * 
  */
 public abstract class InteractionMode implements CaveListener, KeyListener, MouseInputListener {
 	

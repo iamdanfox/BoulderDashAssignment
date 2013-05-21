@@ -137,8 +137,8 @@ public class LevelStorer {
              
         sb.append("{diamondTarget: "+cave.getDiamondTarget()+"}\n");
         
-        for(int y=0;y<cave.height;y++){
-            for(int x=0;x<cave.width;x++){
+        for(int y=0;y<cave.getHeight();y++){
+            for(int x=0;x<cave.getWidth();x++){
                 CaveElement e = cave.getElementAt(new Point(x,y));
                 // execute for non blank squares
                 if (e != null) {

@@ -147,4 +147,7 @@ public class SelectingMode extends InteractionMode implements Selection.Listener
 	@Override
 	public void frozenStateChanged() { }
 
+	@Override
+    public void dimensionsChanged() { }
+
 }

@@ -35,7 +35,7 @@ public class CaveView extends JPanel {
 	 * Create the CaveView JPanel and initialise the parts of its appearance common to all modes.
 	 * @param appState
 	 */
-	public CaveView(ApplicationState appState){
+	public CaveView(final ApplicationState appState){
 		super(new BorderLayout());
 		this.setFocusable(true);
 		Border bevelBorder = new BevelBorder(BevelBorder.LOWERED);
@@ -43,15 +43,31 @@ public class CaveView extends JPanel {
 		borderWidth = bevelBorder.getBorderInsets(this).top;
 		
 		this.appState = appState;
+		appState.cave.addCaveListener(new CaveListener(){
+            public void wonStateChanged() { }
+            public void lostStateChanged() { }
+            public void diamondTargetChanged() { }
+            public void gridChanged() { }
+
+            public void dimensionsChanged() {
+                CaveView.this.setPreferredSize(new Dimension(appState.cave
+                        .getWidth() * squareSize + 2 * borderWidth,
+                        appState.cave.getHeight() * squareSize + 2
+                                * borderWidth));
+            }
+
+            public void frozenStateChanged() { }
+		});
 		
 		// set size
-		this.setPreferredSize(new Dimension(appState.cave.width*squareSize+2*borderWidth, appState.cave.height*squareSize+2*borderWidth));
+		this.setPreferredSize(new Dimension(appState.cave.getWidth()*squareSize+2*borderWidth, appState.cave.getHeight()*squareSize+2*borderWidth));
 	}
-	
-	/**
-	 * Show the contents of the cave.  Calls paintInterior to allow the active Interaction Mode to paint on top the basic cave.
-	 */
-	@Override
+
+    /**
+     * Show the contents of the cave. Calls paintInterior to allow the active
+     * Interaction Mode to paint on top the basic cave.
+     */
+    @Override
 	public void paintComponent(Graphics g){
 		Graphics2D g2d = (Graphics2D)g;
 		
@@ -70,8 +86,8 @@ public class CaveView extends JPanel {
 		
 		// paint elements
 		Cave cave = appState.cave;
-		for(int y=0;y<cave.height;y++){
-			for(int x=0;x<cave.width;x++){
+		for(int y=0;y<cave.getHeight();y++){
+			for(int x=0;x<cave.getWidth();x++){
 				CaveElement e = cave.getElementAt(new Point(x,y));
 				// execute for non blank squares
 				if (e != null)	painters.get(e.getClass()).paint(g2d,e, CaveView.squareSize); 

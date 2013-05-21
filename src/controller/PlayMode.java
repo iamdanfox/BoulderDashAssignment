@@ -141,4 +141,7 @@ public class PlayMode extends InteractionMode {
 	@Override
 	public void mouseMoved(MouseEvent e) { }
 
+	@Override
+    public void dimensionsChanged() { }
+
 }

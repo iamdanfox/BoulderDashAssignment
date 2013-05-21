@@ -83,6 +83,9 @@ public class DiamondTargetField extends JTextField implements CaveListener, Acti
 	public void gridChanged() { }
 
 	@Override
-	public void frozenStateChanged() { } 
+	public void frozenStateChanged() { }
+
+	@Override
+    public void dimensionsChanged() { } 
 
 }

@@ -5,5 +5,6 @@ public interface CaveListener {
 	public void lostStateChanged();
 	public void diamondTargetChanged();
 	public void gridChanged();
+	public void dimensionsChanged();
 	public void frozenStateChanged();
 }

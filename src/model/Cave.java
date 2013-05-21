@@ -10,8 +10,8 @@ import java.util.*;
  */
 public class Cave {
 	
-	public final int width;
-	public final int height;
+	private int width;
+	private int height;
 	private final BiMap<Point,CaveElement> grid;
 
 	private int diamondTarget;
@@ -31,11 +31,12 @@ public class Cave {
 	 * @param height number of squares vertically.
 	 */
 	public Cave(int width, int height) {
-		this.width=width;
-		this.height=height;
 		
 		this.grid = new BiMap<Point,CaveElement>();
 		this.listeners = new HashSet<CaveListener>();
+		
+        this.setWidth(width);
+        this.setHeight(height);
 		
 		stepTimer.scheduleAtFixedRate(new TimerTask(){
 			@Override
@@ -144,8 +145,8 @@ public class Cave {
 	 */
 	private void step(){
 		if (!frozen) { // allow movement
-			for (int y=this.height-1;y>=0;y--){
-				for (int x=0;x<this.width;x++){
+			for (int y=this.getHeight()-1;y>=0;y--){
+				for (int x=0;x<this.getWidth();x++){
 					CaveElement e = this.getElementAt(new Point(x,y));
 					if (e!=null) e.step(x,y);
 				}
@@ -204,8 +205,8 @@ public class Cave {
 		this.grid.clear();
 		
 		// populate with clone of other
-		for(int j=0;j<height;j++){
-			for(int i=0;i<width;i++){
+		for(int j=0;j<getHeight();j++){
+			for(int i=0;i<getWidth();i++){
 				Point p = new Point(i,j);
 				CaveElement elem = other.getElementAt(p);
 				if(elem!=null) this.setElementAt(p, elem.cloneToCave(this));
@@ -226,7 +227,7 @@ public class Cave {
 	 */
 	@Override
     public Cave clone(){
-		Cave cave2 =new Cave(width, height);
+		Cave cave2 =new Cave(getWidth(), getHeight());
 		cave2.copyStateFrom(this);
 		return cave2;
 	}
@@ -259,7 +260,29 @@ public class Cave {
 		for(CaveListener l : this.listeners) l.diamondTargetChanged();
 	}
 
+	protected void fireDimensionsChanged(){
+        for(CaveListener l : this.listeners) l.dimensionsChanged();
+	}
+	
     public Rectangle getCaveBounds() {
-        return new Rectangle(0,0,width,height); // (width-1, height-1) is the bottom right square allowed.
+        return new Rectangle(0,0,getWidth(),getHeight()); // (width-1, height-1) is the bottom right square allowed.
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+        fireDimensionsChanged();
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+        fireDimensionsChanged();
     }
 }
