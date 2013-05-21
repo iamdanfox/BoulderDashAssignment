@@ -13,10 +13,10 @@ import model.*;
 
 /**
  * Responsible for showing the contents of the cave, using a painter for each class of CaveElement.
- *
+ * Automatically repaints whenever the cave's grid changes.
  */
 @SuppressWarnings("serial")
-public class CaveView extends JPanel {
+public class CaveView extends JPanel implements CaveListener {
 	public static final int squareSize = 35;
 	public static final Map<Class<? extends CaveElement>,CaveElementPainter> painters= 
 			new HashMap<Class<? extends CaveElement>,CaveElementPainter>();
@@ -43,25 +43,13 @@ public class CaveView extends JPanel {
 		borderWidth = bevelBorder.getBorderInsets(this).top;
 		
 		this.appState = appState;
-		appState.cave.addCaveListener(new CaveListener(){
-            public void wonStateChanged() { }
-            public void lostStateChanged() { }
-            public void diamondTargetChanged() { }
-            public void gridChanged() { }
-
-            public void dimensionsChanged() {
-                CaveView.this.setPreferredSize(new Dimension(appState.cave
-                        .getWidth() * squareSize + 2 * borderWidth,
-                        appState.cave.getHeight() * squareSize + 2
-                                * borderWidth));
-            }
-
-            public void frozenStateChanged() { }
-		});
 		
-		// set size
-		this.setPreferredSize(new Dimension(appState.cave.getWidth()*squareSize+2*borderWidth, appState.cave.getHeight()*squareSize+2*borderWidth));
-	}
+		// listen to cave grid & dimensions
+		appState.cave.addCaveListener(this);
+
+        // set size
+        dimensionsChanged();
+    }
 
     /**
      * Show the contents of the cave. Calls paintInterior to allow the active
@@ -102,4 +90,21 @@ public class CaveView extends JPanel {
 		g2d.setColor(oldColor);
 		g2d.setClip(oldClip);
 	}
+    
+    public void wonStateChanged() { }
+    public void lostStateChanged() { }
+    public void diamondTargetChanged() { }
+    
+    public void gridChanged() {
+        CaveView.this.repaint();
+    }
+
+    public void dimensionsChanged() {
+        CaveView.this.setPreferredSize(new Dimension(appState.cave
+                .getWidth() * squareSize + 2 * borderWidth,
+                appState.cave.getHeight() * squareSize + 2
+                        * borderWidth));
+    }
+
+    public void frozenStateChanged() { }
 }

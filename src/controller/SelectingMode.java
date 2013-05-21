@@ -115,12 +115,6 @@ public class SelectingMode extends InteractionMode implements Selection.Listener
 	}
 
 	@Override
-	public void gridChanged() {
-		this.appState.caveView.repaint();
-	}
-
-
-	@Override
 	public void mouseClicked(MouseEvent arg0) { }
 
 	@Override
@@ -134,20 +128,5 @@ public class SelectingMode extends InteractionMode implements Selection.Listener
 
 	@Override
 	public void keyTyped(KeyEvent arg0) { }
-
-	@Override
-	public void wonStateChanged() { }
-
-	@Override
-	public void lostStateChanged() { }
-
-	@Override
-	public void diamondTargetChanged() { }
-
-	@Override
-	public void frozenStateChanged() { }
-
-	@Override
-    public void dimensionsChanged() { }
 
 }

@@ -15,9 +15,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import model.Cave;
+import model.CaveListener;
 import model.Direction;
 
-public class PlayMode extends InteractionMode {
+public class PlayMode extends InteractionMode implements CaveListener {
 	
 	private JComponent bigMessage;
 	private JLabel bigMessageLabel;
@@ -56,10 +57,16 @@ public class PlayMode extends InteractionMode {
 		
 		// reset cave (undo all user actions)
 		this.appState.cave.copyStateFrom(startingCave);
+
+        // stop listening to cave
+        this.appState.cave.removeCaveListener(this);
 	}
 
 	@Override
 	protected void makeActiveDelegate() {
+        // listen to cave
+        this.appState.cave.addCaveListener(this);
+        
 		// save pristine state
 		this.startingCave = this.appState.cave.clone();
 		
@@ -90,7 +97,7 @@ public class PlayMode extends InteractionMode {
 
 	@Override
 	public void wonStateChanged() {
-		System.out.println("won state changed to "+this.appState.cave.hasWon());
+		//System.out.println("won state changed to "+this.appState.cave.hasWon());
 		bigMessageLabel.setText("Game won!");
 		bigMessage.setVisible(this.appState.cave.hasWon());
 	}
@@ -102,9 +109,7 @@ public class PlayMode extends InteractionMode {
 	}
 
 	@Override
-	public void gridChanged() {
-		this.appState.caveView.repaint();
-	}
+	public void gridChanged() { }
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
@@ -116,6 +121,9 @@ public class PlayMode extends InteractionMode {
 
 	@Override
 	public void frozenStateChanged() { }
+
+    @Override
+    public void dimensionsChanged() { }
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) { }
@@ -140,8 +148,5 @@ public class PlayMode extends InteractionMode {
 
 	@Override
 	public void mouseMoved(MouseEvent e) { }
-
-	@Override
-    public void dimensionsChanged() { }
 
 }

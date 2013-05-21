@@ -48,11 +48,11 @@ public class ApplicationState {
 		InteractionMode oldMode = activeMode;
 		if (oldMode!=null) {
 			oldMode.makeNotActive();
-			System.out.println(oldMode.getClass() + " made not active");		
+			System.out.println("MODECHANGE: "+ oldMode.getClass().getSimpleName() + " not active");		
 		}
 		
 		// activate new mode, ensure it is wired up to receive events in the cave, keyboard and mouse activity.
-		System.out.println("make "+ m.getClass() + " active");
+		System.out.println("MODECHANGE: "+ m.getClass().getSimpleName() + " active");
 		activeMode = m;
 		m.makeActive();
 	}

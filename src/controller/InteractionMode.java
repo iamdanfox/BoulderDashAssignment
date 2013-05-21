@@ -16,7 +16,7 @@ import model.CaveListener;
  * the 'controller' but does allow painting over the view.
  * 
  */
-public abstract class InteractionMode implements CaveListener, KeyListener, MouseInputListener {
+public abstract class InteractionMode implements KeyListener, MouseInputListener {
 	
 	private final Collection<ModeListener> modeListeners = new HashSet<ModeListener>();
 	protected ApplicationState appState;
@@ -38,7 +38,7 @@ public abstract class InteractionMode implements CaveListener, KeyListener, Mous
 	public final void makeNotActive(){
 		makeNotActiveDelegate();
 		// only stop listening after mode has done its own set down
-		appState.cave.removeCaveListener(this);
+		//appState.cave.removeCaveListener(this);
 		appState.caveView.removeKeyListener(this);
 		appState.caveView.removeMouseListener(this);
 		appState.caveView.removeMouseMotionListener(this);
@@ -54,7 +54,7 @@ public abstract class InteractionMode implements CaveListener, KeyListener, Mous
 	 * Make this mode the active mode, start listening to cave model and events from view (keyboard & mouse). Notify ModeListeners.
 	 */
 	public final void makeActive(){
-		appState.cave.addCaveListener(this);
+		//appState.cave.addCaveListener(this);
 		appState.caveView.addMouseListener(this);
 		appState.caveView.addMouseMotionListener(this);
 		appState.caveView.addKeyListener(this);
