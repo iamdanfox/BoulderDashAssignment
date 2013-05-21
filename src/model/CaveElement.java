@@ -65,5 +65,6 @@ public abstract class CaveElement {
 	/**
 	 * @return String representation of this CaveElement, should encapsulate all state.
 	 */
-	public abstract String toString();
+	@Override
+    public abstract String toString();
 }

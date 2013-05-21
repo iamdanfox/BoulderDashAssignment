@@ -6,9 +6,9 @@ package controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  * @author danfox
@@ -23,8 +23,8 @@ public class LevelStorer {
      * @return The names of all files ending .txt or .TXT in DIRECTORY.
      */
     @SuppressWarnings("serial")
-    public static Set<String> getLevelFiles(){
-        return new HashSet<String>(){{
+    public static ArrayList<String> getLevelFiles(){
+        return new ArrayList<String>(){{
                 // relative to project root
                 File[] files = (new File(DIRECTORY)).listFiles();
                 for (int i = 0; i < files.length; i++)
@@ -42,7 +42,7 @@ public class LevelStorer {
      *         number in DIRECTORY
      */
     public static String findUnusedFilename(){
-        Set<String> takenNames = getLevelFiles();
+        Collection<String> takenNames = getLevelFiles();
         int i=0;
         while (takenNames.contains("level"+i+".txt")) i++;
         return "level"+i+".txt";

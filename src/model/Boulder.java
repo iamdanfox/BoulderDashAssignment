@@ -47,6 +47,7 @@ public class Boulder extends SlipperyGravityElement {
 	}
 
 
+    @Override
     public String toString() {
         return "Boulder";
     }

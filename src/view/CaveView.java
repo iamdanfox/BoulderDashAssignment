@@ -91,14 +91,19 @@ public class CaveView extends JPanel implements CaveListener {
 		g2d.setClip(oldClip);
 	}
     
+    @Override
     public void wonStateChanged() { }
+    @Override
     public void lostStateChanged() { }
+    @Override
     public void diamondTargetChanged() { }
     
+    @Override
     public void gridChanged() {
         CaveView.this.repaint();
     }
 
+    @Override
     public void dimensionsChanged() {
         CaveView.this.setPreferredSize(new Dimension(appState.cave
                 .getWidth() * squareSize + 2 * borderWidth,
@@ -106,5 +111,6 @@ public class CaveView extends JPanel implements CaveListener {
                         * borderWidth));
     }
 
+    @Override
     public void frozenStateChanged() { }
 }

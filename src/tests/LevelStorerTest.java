@@ -5,10 +5,7 @@ import static org.junit.Assert.*;
 
 
 import java.io.FileNotFoundException;
-import java.util.Set;
-
-
-
+import java.util.Collection;
 import org.junit.Test;
 
 import controller.LevelStorer;
@@ -18,7 +15,7 @@ public class LevelStorerTest {
     @Test
     public void testFileReading() throws FileNotFoundException {
         // correctness
-        Set<String> takenNames = LevelStorer.getLevelFiles();
+        Collection<String> takenNames = LevelStorer.getLevelFiles();
         String nextName = LevelStorer.findUnusedFilename();
         assertEquals(false, takenNames.contains(nextName));
         
