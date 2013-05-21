@@ -1,11 +1,11 @@
 18
 + + + + . + # + + + + + + + + + + + + + 
-+ o + o * + # o o o # o + o . o # + # + 
-+ o + * o + o o o o # o + o . o + + # + 
-+ o o * o o o o * o o o + * o + + o # + 
-+ o # + o o o o > o + + o o o . o * # * 
-* o o + o # o * + * + o * # o o + o # + 
++ o + o * + G o o o # o + o . o # + # + 
++ o + * o + o o o o G o + o . o + + # + 
++ o o * o o o o * o o o + * o + + o G + 
++ o G + o o o o > o + + o o o . o * # * 
+* o o + o G o * + * + o * G o o + o # + 
 + o o o * o * + + o + + o # + * o . o + 
-+ o o o o * + + + # o o * o o + + o * + 
++ o o o o * + + + G o o * o o + + o * + 
 + + o o + + o + o # + + o + o o o + o + 
 + + + + . + + + + # . . + + + * + . + + 

@@ -100,15 +100,17 @@ public class CaveView extends JPanel implements CaveListener {
     
     @Override
     public void gridChanged() {
-        CaveView.this.repaint();
+        this.repaint();
     }
 
     @Override
     public void dimensionsChanged() {
+        System.out.println("CaveView noticed dimension change");
         CaveView.this.setPreferredSize(new Dimension(appState.cave
                 .getWidth() * squareSize + 2 * borderWidth,
                 appState.cave.getHeight() * squareSize + 2
                         * borderWidth));
+        
     }
 
     @Override

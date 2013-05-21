@@ -44,15 +44,17 @@ public class LoaderSaver extends JPanel implements ModeListener {
         this.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("loadButton pressed");
                 
                 ArrayList<String> fnames = LevelStorer.getLevelFiles();
                 
                 int loadNow = (lastLoaded + 1) % fnames.size();
                 String filename = fnames.get(loadNow);
+                
+                System.out.println("loadButton pressed, loading "+filename);
 
                 try {
                     Cave c = SimpleLexer.lex(LevelStorer.readFromFile(filename));
+                    System.out.println("Loaded cave with dimensions "+c.getWidth()+"x"+c.getHeight());
                     cave.copyStateFrom(c);
                     lastLoaded = loadNow;
                 } catch (FileNotFoundException ex) {
