@@ -30,7 +30,7 @@ public abstract class SlipperyGravityElement extends CaveElement {
 		Boolean silentChangeMade = false;
 		
 		if (!isFalling){
-			if (elementBelow==null && parentCave.caveBounds.contains(squareBelow)){
+			if (elementBelow==null && parentCave.getCaveBounds().contains(squareBelow)){
 				// if the square below a gravity-bound object becomes empty, the object starts falling at some constant rate
 				isFalling = true;
 				silentChangeMade=true;
@@ -46,7 +46,7 @@ public abstract class SlipperyGravityElement extends CaveElement {
 				silentChangeMade=true;
 			} else {  
 				// elem is exactly within a square.
-				if (!parentCave.caveBounds.contains(squareBelow)){
+				if (!parentCave.getCaveBounds().contains(squareBelow)){
 					// hit bottom of cave
 					isFalling=false;
 					silentChangeMade=true;
@@ -67,10 +67,10 @@ public abstract class SlipperyGravityElement extends CaveElement {
 						Point br = new Point(x+1,y+1);
 						Point l = new Point(x-1,y);
 						Point bl = new Point(x-1,y+1);
-						if (parentCave.caveBounds.contains(r) && 
+						if (parentCave.getCaveBounds().contains(r) && 
 								parentCave.getElementAt(r)==null && parentCave.getElementAt(br)==null){
 							move(Direction.RIGHT);	
-						} else if (parentCave.caveBounds.contains(l) && 
+						} else if (parentCave.getCaveBounds().contains(l) && 
 								parentCave.getElementAt(l)==null && parentCave.getElementAt(bl)==null){
 							move(Direction.LEFT);	
 						} else {

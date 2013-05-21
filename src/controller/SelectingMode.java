@@ -66,7 +66,7 @@ public class SelectingMode extends InteractionMode implements Selection.Listener
 
 			if (!(sq1==oldSq1 && sq2==oldSq2)){
 				Rectangle r = new Rectangle(Math.min(sq1.x, sq2.x), Math.min(sq1.y, sq2.y), 1+Math.abs(sq1.x-sq2.x), 1+Math.abs(sq1.y-sq2.y));
-				selection.update(r.intersection(appState.cave.caveBounds));
+				selection.update(r.intersection(appState.cave.getCaveBounds()));
 			}
 		}
 	}

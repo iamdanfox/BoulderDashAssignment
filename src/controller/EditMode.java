@@ -140,7 +140,7 @@ public class EditMode extends SelectingMode {
 			// check all elements fit.
 			Cave cave = appState.cave;
 			Boolean allFit = true;
-			for (Point p : selection) allFit = allFit && cave.caveBounds.contains(new Point(p.x+sqOffsetX,p.y+sqOffsetY));
+			for (Point p : selection) allFit = allFit && cave.getCaveBounds().contains(new Point(p.x+sqOffsetX,p.y+sqOffsetY));
 			
 			// place elements
 			for (Point p1 : selection){

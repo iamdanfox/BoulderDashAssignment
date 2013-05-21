@@ -12,7 +12,6 @@ public class Cave {
 	
 	public final int width;
 	public final int height;
-	public final Rectangle caveBounds;
 	private final BiMap<Point,CaveElement> grid;
 
 	private int diamondTarget;
@@ -34,7 +33,6 @@ public class Cave {
 	public Cave(int width, int height) {
 		this.width=width;
 		this.height=height;
-		caveBounds = new Rectangle(0,0,width,height); // (width-1, height-1) is the bottom right square allowed.
 		
 		this.grid = new BiMap<Point,CaveElement>();
 		this.listeners = new HashSet<CaveListener>();
@@ -72,7 +70,7 @@ public class Cave {
 	 * the cave will be left in the state it was in before the operation.
 	 */
 	public Boolean setElementAt(Point p, CaveElement e){	
-		if (caveBounds.contains(p)){
+		if (getCaveBounds().contains(p)){
 			// eliminate duplication
 			CaveElement overWrittenElement = removeElementAt(p);
 			Point overWrittenPoint = removeElement(e);			
@@ -198,7 +196,7 @@ public class Cave {
 	
 	/**
 	 * Replaces the current grid and accompanying state (hasWon, hasLost, diamondTarget and isFrozen)
-	 * with a deep cloned copy from another cave.
+	 * with a deep cloned copy from another cave. Doesn't transfer listeners.
 	 * @param other the cave whose grid is to be cloned.
 	 */
 	public void copyStateFrom(Cave other){
@@ -260,4 +258,8 @@ public class Cave {
 	protected void fireDiamondTargetChanged(){
 		for(CaveListener l : this.listeners) l.diamondTargetChanged();
 	}
+
+    public Rectangle getCaveBounds() {
+        return new Rectangle(0,0,width,height); // (width-1, height-1) is the bottom right square allowed.
+    }
 }
