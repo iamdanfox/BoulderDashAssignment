@@ -76,22 +76,24 @@ public class PlayMode extends InteractionMode implements CaveListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(!this.appState.cave.isFrozen()){
-			System.out.println(e);
-			switch (e.getKeyCode()){
-			case 37:
-				this.appState.cave.getPlayer().attemptMove(Direction.LEFT);
-				break;
-			case 38:
-				this.appState.cave.getPlayer().attemptMove(Direction.UP);
-				break;
-			case 39:
-				this.appState.cave.getPlayer().attemptMove(Direction.RIGHT);
-				break;
-			case 40:
-				this.appState.cave.getPlayer().attemptMove(Direction.DOWN);
-				break;
-			}
+	    Boolean frozen = this.appState.cave.isFrozen(); 
+		//System.out.println(e);
+		switch (e.getKeyCode()){
+		case 37:
+			if(!frozen) this.appState.cave.getPlayer().attemptMove(Direction.LEFT);
+			break;
+		case 38:
+		    if(!frozen) this.appState.cave.getPlayer().attemptMove(Direction.UP);
+			break;
+		case 39:
+		    if(!frozen) this.appState.cave.getPlayer().attemptMove(Direction.RIGHT);
+			break;
+		case 40:
+		    if(!frozen) this.appState.cave.getPlayer().attemptMove(Direction.DOWN);
+			break;
+		case 27: // Esc
+	        this.appState.setActiveMode(this);
+		    break;
 		}
 	}
 
@@ -141,7 +143,7 @@ public class PlayMode extends InteractionMode implements CaveListener {
 	public void keyReleased(KeyEvent arg0) { }
 
 	@Override
-	public void keyTyped(KeyEvent arg0) { }
+	public void keyTyped(KeyEvent arg0) {}
 
 	@Override
 	public void mouseDragged(MouseEvent e) { }
