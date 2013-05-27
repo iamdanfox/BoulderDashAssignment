@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import model.Cave;
@@ -31,7 +32,26 @@ public class LoaderSaver extends JPanel implements ModeListener {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 System.out.println("saveButton pressed");
-                System.out.println(LevelStorer.writeToFile(SimpleLexer.antiLex(cave)));
+                ArrayList<String> taken = LevelStorer.getLevelFiles();
+                String name = JOptionPane.showInputDialog(
+                        "Please enter a name for this level",
+                        LevelStorer.findUnusedLevelname());
+                if (name != null) {
+                    while (taken.contains(name + ".txt")) {
+                        name = JOptionPane
+                                .showInputDialog(
+                                        "Sorry, " + name + " is taken. Please enter another name for this level",
+                                        LevelStorer.findUnusedLevelname());
+                    }
+                    // POST: taken.contains(name+".txt")=false
+
+                    System.out.println("Attempting save to "+name+ ".txt");
+                    try {
+                        LevelStorer.writeToFile(name+".txt",SimpleLexer.antiLex(cave));
+                    } catch (FileNotFoundException e) {
+                        JOptionPane.showMessageDialog(null, "Couldn't save level to "+name+".txt", "Error", 0);
+                    }
+                }
             }
         });
     }};

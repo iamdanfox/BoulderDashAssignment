@@ -16,7 +16,7 @@ public class LevelStorerTest {
     public void testFileReading() throws FileNotFoundException {
         // correctness
         Collection<String> takenNames = LevelStorer.getLevelFiles();
-        String nextName = LevelStorer.findUnusedFilename();
+        String nextName = LevelStorer.findUnusedLevelname()+".txt";
         assertEquals(false, takenNames.contains(nextName));
         
         //System.out.println(LevelStorer.readFromFile("level0.txt"));
