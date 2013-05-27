@@ -14,7 +14,7 @@ import model.SimpleLexer;
 import model.SimpleLexer.LexerException;
 
 /**
- * Allows the user to load/save a text file representation of a cave.
+ * Allows the user to load/save a text file representating a cave.
  * @author danfox
  *
  */
@@ -22,6 +22,14 @@ import model.SimpleLexer.LexerException;
 public class LoaderSaver extends JPanel implements ModeListener {
     private final Cave cave;
     private int lastLoaded =-1;
+    
+    public LoaderSaver(Cave cave, InteractionMode mode){
+        this.add(loadButton);
+        this.add(saveButton);
+        this.cave = cave;
+        
+        mode.registerModeListener(this);
+    }
     
     /**
      * saveButton simply saves the current cave to an unused filename.
@@ -49,7 +57,7 @@ public class LoaderSaver extends JPanel implements ModeListener {
                     try {
                         LevelStorer.writeToFile(name+".txt",SimpleLexer.antiLex(cave));
                     } catch (FileNotFoundException e) {
-                        JOptionPane.showMessageDialog(null, "Couldn't save level to "+name+".txt", "Error", 0);
+                        showError("Couldn't save level to "+name+".txt");
                     }
                 }
             }
@@ -73,25 +81,21 @@ public class LoaderSaver extends JPanel implements ModeListener {
                 System.out.println("loadButton pressed, loading "+filename);
 
                 try {
-                    Cave c = SimpleLexer.lex(LevelStorer.readFromFile(filename));
-                    System.out.println("Loaded cave with dimensions "+c.getWidth()+"x"+c.getHeight());
-                    cave.copyStateFrom(c);
                     lastLoaded = loadNow;
+                    Cave c = SimpleLexer.lex(LevelStorer.readFromFile(filename));
+                    cave.copyStateFrom(c);
+                    System.out.println("Loaded cave with dimensions "+c.getWidth()+"x"+c.getHeight());
                 } catch (FileNotFoundException ex) {
-                    System.err.println(filename +" couldn't be loaded");
+                    showError(filename +" couldn't be loaded");
                 } catch (LexerException ex) {
-                    System.err.println(filename +" couldn't be lexed");
+                    showError(filename +" couldn't be lexed");
                 }
             }
         });
     }};
     
-    public LoaderSaver(Cave cave, InteractionMode mode){
-        this.add(loadButton);
-        this.add(saveButton);
-        this.cave = cave;
-        
-        mode.registerModeListener(this);
+    private void showError(String msg){
+        JOptionPane.showMessageDialog(null, msg, "Error", 0);
     }
 
     @Override
