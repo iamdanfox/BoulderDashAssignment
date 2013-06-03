@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.io.FileNotFoundException;
 
 import javax.swing.*;
@@ -34,6 +36,23 @@ public class ApplicationFrame {
 		// set up state
 		appState = new ApplicationState(new Cave(10,10));
 		Cave cave = appState.cave;
+		appState.caveView.addComponentListener(new ComponentListener() 
+		{  
+	        @Override
+            public void componentResized(ComponentEvent evt) {
+	            //Component c = (Component)evt.getSource();
+	            frame.pack();
+	        }
+
+            @Override
+            public void componentHidden(ComponentEvent arg0) { }
+
+            @Override
+            public void componentMoved(ComponentEvent arg0) {  }
+
+            @Override
+            public void componentShown(ComponentEvent arg0) { }
+		});
 		
 		// set up interaction modes
 		final SelectingMode editMode = new EditMode();

@@ -109,6 +109,11 @@ public class CaveView extends JPanel implements CaveListener {
                 .getWidth() * squareSize + 2 * borderWidth,
                 appState.cave.getHeight() * squareSize + 2
                         * borderWidth));
+        CaveView.this.setSize(new Dimension(appState.cave
+                .getWidth() * squareSize + 2 * borderWidth,
+                appState.cave.getHeight() * squareSize + 2
+                        * borderWidth));
+        
         System.out.println("CaveView preferredSize="+this.getPreferredSize());
     }
 
