@@ -57,6 +57,10 @@ public class Cave {
 	public CaveElement getElementAt(Point p){
 		return grid.get(p);
 	}
+
+    public CaveElement getElementAt(int x, int y) {
+        return getElementAt(new Point(x,y));
+    }
 	
 	/**
 	 * @return the only player allowed on the grid

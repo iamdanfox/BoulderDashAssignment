@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 
 import model.Cave;
 import model.CaveListener;
+import model.Diamond;
 
 
 @SuppressWarnings("serial")
@@ -42,19 +43,32 @@ public class DiamondTargetField extends JTextField implements CaveListener, Acti
 	// make cave react to field
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+	    int d = countGridsDiamonds();
 		try{
 			int x = Integer.parseInt(this.getText()); 
-			if (x==0) throw new NumberFormatException(); // don't allow user to set game won at initial state.
+			if (x==0) throw new Exception("Starting with a diamond count of 0 means the game is already won"); // don't allow user to set game won at initial state.
+			if (x>d) throw new Exception("This makes the game impossible! The cave only contains "+d+" diamonds!");
 			cave.setDiamondTarget(x);
 		}catch(NumberFormatException e){
             errorMsg("Please enter a valid number greater than zero");
 		}catch (Exception e){
 			errorMsg(e.getMessage());
+            this.setText(d+"");
 		}
 	}
 	
 	private void errorMsg(String msg){ JOptionPane.showMessageDialog(null, msg, "Error Message", JOptionPane.ERROR_MESSAGE); }
 
+	private int countGridsDiamonds(){
+	    int diamonds=0;
+	    for (int y=0;y<cave.getHeight();y++){
+	        for (int x=0;x<cave.getWidth();x++){
+	            if (cave.getElementAt(x,y) instanceof Diamond) diamonds++;
+	        }
+	    }
+	    return diamonds;
+	}
+	
 	@Override
 	public void madeActive(InteractionMode m) {
 		if (cave.isFrozen()) this.setEnabled(true);
@@ -66,10 +80,13 @@ public class DiamondTargetField extends JTextField implements CaveListener, Acti
 	}
 
 	@Override
-	public void focusGained(FocusEvent arg0) { }
+	public void focusGained(FocusEvent arg0) {
+	    this.setToolTipText(countGridsDiamonds() + " Diamonds in cave");
+	}
 
 	@Override
 	public void focusLost(FocusEvent arg0) {
+	    this.setToolTipText(null);
 		actionPerformed(null); // equivalent of submitting the field (only with no ActionEvent).
 	}
 
