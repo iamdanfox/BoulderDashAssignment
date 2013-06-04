@@ -1,0 +1,11 @@
+22
+G . . G * o o G . . G . . . . . * G . * 
+. . . G o o G G o . G . . . * * o G o + 
+. . o G o * G o o . . . G . * o o G * + 
+. o o G * + G * * o o . G o o o o G o o 
+o * * + + . G + + * * * G o o * * G o + 
+* + + + . . G . + + + o G * * + o G + . 
++ + o . . . . . o + + + G o + . + . . . 
++ + o + . . o . . B + + + o . . . + . + 
+B B B + + + B . B B B B o B . . B + + B 
+> + + + B B B + + + + + * . . B B B B + 
