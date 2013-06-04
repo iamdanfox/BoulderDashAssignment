@@ -1,0 +1,11 @@
+20
+B B B B B B B B B B B B B B B B B + + + 
+B + + + + + + + + B B B B + + + + + B B 
+> + B B B B + + + + + + + + B B B B B B 
+B B B B B + + B B B B B + + + + + B B B 
+B B B + + + B B + + + + + o o o + + + + 
+o o o o * + + + + o + o * o o o o o o o 
+o o * o o o * o o o o * o o * * o o o # 
+o * + + # o o * * # * * * * + # + + + + 
+* # + + + + * * * * * # + + + + + + + # 
++ + + + + + # + + + + + + + + # + + + + 
