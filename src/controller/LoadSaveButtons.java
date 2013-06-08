@@ -21,10 +21,10 @@ import model.SimpleLexer.LexerException;
  *
  */
 @SuppressWarnings("serial")
-public class LoaderSaver extends JPanel implements ModeListener {
+public class LoadSaveButtons extends JPanel implements ModeListener {
     private final Cave cave;
     
-    public LoaderSaver(Cave cave, InteractionMode mode){
+    public LoadSaveButtons(Cave cave, InteractionMode mode){
         this.add(loadButton);
         this.add(saveButton);
         this.cave = cave;
@@ -74,7 +74,7 @@ public class LoaderSaver extends JPanel implements ModeListener {
                 fc.setCurrentDirectory(LevelStorer.DIRFILE);
                 
                 // Show chooser, react to 
-                if (fc.showOpenDialog(LoaderSaver.this) == JFileChooser.APPROVE_OPTION) {
+                if (fc.showOpenDialog(LoadSaveButtons.this) == JFileChooser.APPROVE_OPTION) {
                     File file = fc.getSelectedFile();
                     try {
                         Cave c = SimpleLexer.lex(LevelStorer.readFromFile(file));

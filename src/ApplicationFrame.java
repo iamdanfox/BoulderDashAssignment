@@ -103,7 +103,7 @@ public class ApplicationFrame {
 		
 
         toolbar.addSeparator();
-        toolbar.add(new LoaderSaver(cave, editMode));
+        toolbar.add(new LoadSaveButtons(cave, editMode));
 		
 		// fill cave:
         try {
