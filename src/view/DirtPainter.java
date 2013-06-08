@@ -17,6 +17,9 @@ public class DirtPainter implements CaveElementPainter {
 		
 		// load image, check its valid
 		ImageIcon imageIcon = new ImageIcon("images/dirt.png");
+        //ImageIcon imageIcon = new ImageIcon(getClass().getResource("/images/dirt.png")); 
+		// TODO make this work when exporting as JAR
+		
 		assert (imageIcon.getImageLoadStatus() != MediaTracker.ERRORED);
 		assert(imageIcon.getIconHeight() <= s);
 		assert(imageIcon.getIconWidth() <= s);
