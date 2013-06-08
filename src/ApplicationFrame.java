@@ -93,7 +93,7 @@ public class ApplicationFrame {
 		toolbar.addSeparator();
 		
 		// delete button
-		toolbar.add(new DeleteSelectionButton(cave,editMode));
+		toolbar.add(new DeleteSelectionButton(appState,editMode));
 		
 		// wall colour combobox
 		toolbar.add(new ColorWallSelectionBox(cave,editMode));

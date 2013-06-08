@@ -3,6 +3,8 @@ package controller;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 
@@ -13,11 +15,19 @@ public class DeleteSelectionButton extends JButton implements ActionListener, Se
 	private Cave c;
 	private SelectingMode m;
 	
-	public DeleteSelectionButton(Cave c, SelectingMode m){
+	public DeleteSelectionButton(ApplicationState appState, SelectingMode m){
 		super("Delete");
-		this.c=c;
+		this.c=appState.cave;
 		this.m=m;
 
+		appState.caveView.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyPressed(KeyEvent e) { 
+                if (DeleteSelectionButton.this.isEnabled() && e.getKeyCode()==8)
+                    DeleteSelectionButton.this.actionPerformed(null);
+            }
+        });
+		
 		// initialise to not enabled
 		this.setEnabled(false);
 		this.setVisible(false);
