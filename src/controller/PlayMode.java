@@ -79,19 +79,19 @@ public class PlayMode extends InteractionMode implements CaveListener {
 	    Boolean frozen = this.appState.cave.isFrozen(); 
 		//System.out.println(e);
 		switch (e.getKeyCode()){
-		case 37:
+		case KeyEvent.VK_LEFT:
 			if(!frozen) this.appState.cave.getPlayer().attemptMove(Direction.LEFT);
 			break;
-		case 38:
+		case KeyEvent.VK_UP:
 		    if(!frozen) this.appState.cave.getPlayer().attemptMove(Direction.UP);
 			break;
-		case 39:
+		case KeyEvent.VK_RIGHT:
 		    if(!frozen) this.appState.cave.getPlayer().attemptMove(Direction.RIGHT);
 			break;
-		case 40:
+		case KeyEvent.VK_DOWN:
 		    if(!frozen) this.appState.cave.getPlayer().attemptMove(Direction.DOWN);
 			break;
-		case 27: // Esc
+		case KeyEvent.VK_ESCAPE: // Esc
 	        this.appState.setActiveMode(this);
 		    break;
 		}

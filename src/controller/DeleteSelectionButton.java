@@ -23,7 +23,9 @@ public class DeleteSelectionButton extends JButton implements ActionListener, Se
 		appState.caveView.addKeyListener(new KeyAdapter(){
             @Override
             public void keyPressed(KeyEvent e) { 
-                if (DeleteSelectionButton.this.isEnabled() && e.getKeyCode()==8)
+                if (DeleteSelectionButton.this.isEnabled()
+                        && (e.getKeyCode() == KeyEvent.VK_BACK_SPACE || e
+                                .getKeyCode() == KeyEvent.VK_DELETE))
                     DeleteSelectionButton.this.actionPerformed(null);
             }
         });
