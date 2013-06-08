@@ -2,10 +2,12 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -21,7 +23,6 @@ import model.SimpleLexer.LexerException;
 @SuppressWarnings("serial")
 public class LoaderSaver extends JPanel implements ModeListener {
     private final Cave cave;
-    private int lastLoaded =-1;
     
     public LoaderSaver(Cave cave, InteractionMode mode){
         this.add(loadButton);
@@ -53,43 +54,40 @@ public class LoaderSaver extends JPanel implements ModeListener {
                     }
                     // POST: taken.contains(name+".txt")=false
 
-                    System.out.println("Attempting save to "+name+ ".txt");
-                    try {
-                        LevelStorer.writeToFile(name+".txt",SimpleLexer.antiLex(cave));
-                    } catch (FileNotFoundException e) {
-                        showError("Couldn't save level to "+name+".txt");
-                    }
+                    LevelStorer.writeToFile(name+".txt",SimpleLexer.antiLex(cave));
+                    System.out.println("Saved to "+name+ ".txt");
                 }
             }
         });
     }};
     
     /**
-     * When clicked, this should allow the user to select a file, then
+     * When clicked, this button allows the user to select a file, then
      * replace the appState's cave with the stored version (triggering a view resize).
      */
     final JButton loadButton = new JButton("Load"){{
         this.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Create a file chooser
+                final JFileChooser fc = new JFileChooser();
+                fc.setCurrentDirectory(LevelStorer.DIRFILE);
                 
-                ArrayList<String> fnames = LevelStorer.getLevelFiles();
-                
-                int loadNow = (lastLoaded + 1) % fnames.size();
-                String filename = fnames.get(loadNow);
-                
-                System.out.println("loadButton pressed, loading "+filename);
-
-                try {
-                    lastLoaded = loadNow;
-                    Cave c = SimpleLexer.lex(LevelStorer.readFromFile(filename));
-                    cave.copyStateFrom(c);
-                    System.out.println("Loaded cave with dimensions "+c.getWidth()+"x"+c.getHeight());
-                } catch (FileNotFoundException ex) {
-                    showError(filename +" couldn't be loaded");
-                } catch (LexerException ex) {
-                    showError(filename +" couldn't be lexed");
-                }
+                // Show chooser, react to 
+                if (fc.showOpenDialog(LoaderSaver.this) == JFileChooser.APPROVE_OPTION) {
+                    File file = fc.getSelectedFile();
+                    try {
+                        Cave c = SimpleLexer.lex(LevelStorer.readFromFile(file));
+                        cave.copyStateFrom(c);
+                        System.out.println("Loaded cave from "+file.getName()+" with dimensions "
+                                + c.getWidth() + "x" + c.getHeight());
+                    } catch (FileNotFoundException ex) {
+                        showError(file.getName() + " couldn't be loaded");
+                    } catch (LexerException ex) {
+                        System.err.println("Couldn't lex "+file.getName());
+                        showError(file.getName() + " isn't a valid Boulder Dash Level.");
+                    }
+                } 
             }
         });
     }};

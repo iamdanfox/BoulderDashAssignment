@@ -3,7 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.io.FileNotFoundException;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -107,8 +106,22 @@ public class ApplicationFrame {
         toolbar.add(new LoaderSaver(cave, editMode));
 		
 		// fill cave:
-		loadCave("hard.txt"); 
-		//loadCave("demo.txt");   
+        try {
+            appState.cave.copyStateFrom(SimpleLexer.lex("30\n" +
+                    "* o B + + + o o o o o G + + + + + * + + \n" +
+                    "* o B + + + o o o o o G + + + + + * + + \n" +
+                    "* o B + + + + * * * G G + + + + + * + + \n" +
+                    "* o B + + + + o > o . . . . . + + + + + \n" +
+                    "* o B + + + # # . o o . . . . # # + + + \n" +
+                    "* o B + + + # # # # # . . . . # # + + + \n" +
+                    "* o B + + + * * * * * + . . . # # + + + \n" +
+                    "* o B + + + + o + o + + + + + * * + + + \n" +
+                    "* o B + + + + * * * + + + + * * * * + + \n" +
+                    "* + + + + + + + + + + + + + + + + + + + "));
+        } catch (LexerException e) {
+            System.err.println("Couldn't lex initial level.");
+            e.printStackTrace();
+        }
 		
 		// last minute settings, then curtains up
 		frame.pack();
@@ -147,20 +160,6 @@ public class ApplicationFrame {
 	public static void main(String[] args) {
 		ApplicationFrame window = new ApplicationFrame();
 		window.frame.setVisible(true);
-	}
-
-	
-	private void loadCave(String filename){
-        try {
-            Cave c = SimpleLexer.lex(LevelStorer.readFromFile(filename));
-            appState.cave.copyStateFrom(c);
-        } catch (FileNotFoundException e) {
-            System.err.println(filename +" couldn't be loaded");
-            e.printStackTrace();
-        } catch (LexerException e) {
-            System.err.println(filename +" couldn't be lexed");
-            e.printStackTrace();
-        }
 	}
 
 }

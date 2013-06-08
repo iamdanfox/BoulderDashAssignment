@@ -17,6 +17,7 @@ import java.util.Scanner;
 public class LevelStorer {
     
     public final static String DIRECTORY = "./levels";
+    public final static File DIRFILE = new File(DIRECTORY);
     
     /**
      * 
@@ -26,7 +27,7 @@ public class LevelStorer {
     public static ArrayList<String> getLevelFiles(){
         return new ArrayList<String>(){{
                 // relative to project root
-                File[] files = (new File(DIRECTORY)).listFiles();
+                File[] files = DIRFILE.listFiles();
                 for (int i = 0; i < files.length; i++)
                     if (files[i].isFile()) {
                         String fname = files[i].getName();
@@ -53,14 +54,9 @@ public class LevelStorer {
      * @param contents
      * @return the filename that was written
      */
-    public static String writeToFile(String contents){
+    public static String writeToUnusedFile(String contents){
         String fname = findUnusedLevelname()+".txt";
-        try {
-            writeToFile(fname,contents);
-        } catch (FileNotFoundException e) {
-            // this should never happen
-            e.printStackTrace();
-        }
+        writeToFile(fname,contents);
         return fname;
     }
     
@@ -70,13 +66,19 @@ public class LevelStorer {
      * @param contents
      * @throws FileNotFoundException 
      */
-    public static void writeToFile(String fileName, String contents) throws FileNotFoundException {
-        PrintWriter out = new PrintWriter(DIRECTORY + "/" + fileName);
-        out.println(contents);
-        out.close();
+    public static void writeToFile(String fileName, String contents)  {
+        try {
+            PrintWriter out = new PrintWriter(DIRECTORY + "/" + fileName);
+            out.println(contents);
+            out.close();
+        } catch (FileNotFoundException e) {
+            // this should never happen
+            e.printStackTrace();
+            throw new RuntimeException("write to unused filename failed");
+        }
     }
     
-    public static String readFromFile(String fileName) throws FileNotFoundException{
-        return new Scanner(new File(DIRECTORY+"/"+fileName)).useDelimiter("\\Z").next();
+    public static String readFromFile(File file) throws FileNotFoundException {
+        return new Scanner(file).useDelimiter("\\Z").next();
     }
 }
