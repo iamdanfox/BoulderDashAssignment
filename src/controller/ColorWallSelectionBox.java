@@ -17,12 +17,14 @@ public class ColorWallSelectionBox extends JComboBox implements ActionListener, 
 	private final SelectingMode mode;
 	
 	/**
-	 * 
+	 * The ComboBox will only be visible while the mode is active.
 	 * @param cave
-	 * @param mode the mode to link this ComboBox to.  The ComboBox will only be visible while the mode is active.
+	 * @param mode the mode to link this ComboBox to.  
 	 */
 	public ColorWallSelectionBox(Cave cave, SelectingMode mode){
 		super(Wall.allowedColors.keySet().toArray(new String[0])); // fill with titles from allowedColors
+		
+		this.setPrototypeDisplayValue("Green");
 		
 		// initialise to not enabled.
 		this.setSelectedIndex(-1);

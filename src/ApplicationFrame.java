@@ -83,11 +83,11 @@ public class ApplicationFrame {
 		
 		// set up interaction mode buttons
 		toolbar.add(makeModeButton(editMode, "Edit"));
-		toolbar.add(makeModeButton(cWallMode, "Wall"));
-		toolbar.add(makeModeButton(cBoulder, "Boulder"));
-		toolbar.add(makeModeButton(cDiamond, "Diamond"));
-		toolbar.add(makeModeButton(cDirt, "Dirt"));
-		toolbar.add(makeModeButton(cPlayer, "Player"));
+		toolbar.add(makeModeButton(cWallMode, "New Wall"));
+		toolbar.add(makeModeButton(cBoulder, "New Boulder"));
+		toolbar.add(makeModeButton(cDiamond, "New Diamond"));
+		toolbar.add(makeModeButton(cDirt, "New Dirt"));
+		toolbar.add(makeModeButton(cPlayer, "New Player"));
 		toolbar.add(makeModeButton(playMode, "Play"));
 		
 		toolbar.addSeparator();
