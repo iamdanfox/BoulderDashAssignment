@@ -23,19 +23,28 @@ public class SimpleLexerTest {
             cs[1] = '*';
             cs[2] = '+';
             cs[3] = '#';
-            cs[4] = '<';
+            cs[4] = '>';
             
-            for (int i=0;i<cs.length;i++)
-                assertEquals(cs[i], SimpleLexer.caveElemToChar(SimpleLexer.charToCaveElem(cs[i])));
+            for (int i=0;i<cs.length;i++){
+                Character expected =cs[i];
+                Character actual= SimpleLexer.caveElemToChar(SimpleLexer.charToCaveElem(cs[i]));
+                System.out.println("expected "+expected+", actual: "+actual);
+                assertEquals(expected, actual);
+            }
         }};
     }
     
     @Test
     public void lexTest() throws LexerException{
         String[] strs = new String[3];
-        strs[0]= "3\n< o . \n# # # ";
-        strs[1]= "0\n< o . ";
-        strs[2]= "100000\n. . . \n+ + + ";
+        strs[0]="3\n" +
+        		"> o . \n" +
+        		"# # # ";
+        strs[1]="0\n" +
+        		"> o . ";
+        strs[2]="100000\n" +
+        		". . . \n" +
+        		"+ + + ";
         
         for (int i=0;i<strs.length;i++){
             System.out.println("EXPECTED:\n"+strs[i]);
@@ -54,7 +63,7 @@ public class SimpleLexerTest {
         cave2.setElementAt(new Point(1,0), new Boulder(cave2)); 
         
         String intended = "0" +
-        		          "\n< o . ";
+        		          "\n> o . ";
         assertEquals(intended,SimpleLexer.antiLex(cave2));// bit too strict atm.
     }
     
@@ -67,7 +76,7 @@ public class SimpleLexerTest {
         cave2.setDiamondTarget(10);
         String intended = "10" +
                           "\n. o . " + 
-                          "\n< . . ";
+                          "\n> . . ";
         assertEquals(intended,SimpleLexer.antiLex(cave2));// bit too strict atm.
     }
 }
