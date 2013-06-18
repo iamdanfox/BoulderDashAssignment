@@ -1,11 +1,11 @@
 package tests;
 
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
 import java.util.Collection;
+
 import org.junit.Test;
 
 import controller.LevelStorer;

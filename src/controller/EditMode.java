@@ -6,12 +6,12 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.util.*;
-
-import view.CaveView;
+import java.util.HashSet;
+import java.util.Set;
 
 import model.Cave;
 import model.CaveElement;
+import view.CaveView;
 
 public class EditMode extends SelectingMode {
 	

@@ -5,9 +5,10 @@ import java.awt.MediaTracker;
 import java.awt.Point;
 import java.awt.Shape;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
 
-import model.*;
+import model.CaveElement;
+import model.Player;
 
 
 public class PlayerPainter implements CaveElementPainter {

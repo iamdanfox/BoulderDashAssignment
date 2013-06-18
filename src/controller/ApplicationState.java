@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import model.Cave;
-
 import view.CaveView;
 
 

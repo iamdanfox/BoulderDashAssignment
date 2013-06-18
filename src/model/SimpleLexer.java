@@ -1,9 +1,9 @@
 package model;
 
-import java.awt.Point;
-import java.util.Map;
-import java.util.HashMap;
 import java.awt.Color;
+import java.awt.Point;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SimpleLexer {
 

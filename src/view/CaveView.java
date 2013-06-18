@@ -1,14 +1,28 @@
 package view;
 
-import java.awt.*;
-import java.util.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Shape;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 
+import model.Boulder;
+import model.Cave;
+import model.CaveElement;
+import model.CaveListener;
+import model.Diamond;
+import model.Dirt;
+import model.Player;
+import model.Wall;
 import controller.ApplicationState;
-
-import model.*;
 
 
 /**

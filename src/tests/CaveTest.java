@@ -1,9 +1,19 @@
 package tests;
 
-import static org.junit.Assert.*;
-import java.awt.*;
+import static org.junit.Assert.assertEquals;
 
-import model.*;
+import java.awt.Color;
+import java.awt.Point;
+import java.awt.Rectangle;
+
+import model.Boulder;
+import model.Cave;
+import model.CaveListener;
+import model.Diamond;
+import model.Direction;
+import model.Dirt;
+import model.Player;
+import model.Wall;
 
 import org.junit.Test;
 

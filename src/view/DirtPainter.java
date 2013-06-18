@@ -4,9 +4,9 @@ import java.awt.Graphics2D;
 import java.awt.MediaTracker;
 import java.awt.Point;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
 
-import model.*;
+import model.CaveElement;
 
 
 public class DirtPainter implements CaveElementPainter {

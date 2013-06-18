@@ -3,7 +3,8 @@ package view;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
-import model.*;
+import model.CaveElement;
+import model.Wall;
 
 
 public class WallPainter implements CaveElementPainter {

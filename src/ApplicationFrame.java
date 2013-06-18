@@ -1,15 +1,35 @@
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+import javax.swing.JToolBar;
+import javax.swing.border.EmptyBorder;
 
-import model.*;
+import model.Boulder;
+import model.Cave;
+import model.Diamond;
+import model.Dirt;
+import model.Player;
+import model.SimpleLexer;
 import model.SimpleLexer.LexerException;
-import controller.*;
+import model.Wall;
+import controller.ApplicationState;
+import controller.ColorWallSelectionBox;
+import controller.CreatorMode;
+import controller.DeleteSelectionButton;
+import controller.DiamondTargetField;
+import controller.EditMode;
+import controller.InteractionMode;
+import controller.LoadSaveButtons;
+import controller.ModeListener;
+import controller.PlayMode;
+import controller.SelectingMode;
 
 
 

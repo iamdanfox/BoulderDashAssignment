@@ -2,7 +2,10 @@ package model;
 
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A mutable representation of a Boulder Dash cave using CaveElements.
